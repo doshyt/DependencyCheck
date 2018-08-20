@@ -402,6 +402,8 @@ public final class CliParser {
                 .desc("Disable the Nuspec Analyzer.").build();
         final Option disableNugetconfAnalyzer = Option.builder().longOpt(ARGUMENT.DISABLE_NUGETCONF)
         .desc("Disable the Nuget packages.config Analyzer.").build();
+        final Option disableDotnetAssetsAnalyzer = Option.builder().longOpt(ARGUMENT.DISABLE_DOTNETASSETS)
+            .desc("Disable the Dotnet project.assets.json Analyzer.").build();
         final Option disableAssemblyAnalyzer = Option.builder().longOpt(ARGUMENT.DISABLE_ASSEMBLY)
                 .desc("Disable the .NET Assembly Analyzer.").build();
         final Option disablePythonDistributionAnalyzer = Option.builder().longOpt(ARGUMENT.DISABLE_PY_DIST)
@@ -463,6 +465,7 @@ public final class CliParser {
                 .addOption(disableOpenSSLAnalyzer)
                 .addOption(disableNuspecAnalyzer)
                 .addOption(disableNugetconfAnalyzer)
+                .addOption(disableDotnetAssetsAnalyzer)
                 .addOption(disableCentralAnalyzer)
                 .addOption(disableNexusAnalyzer)
                 .addOption(cocoapodsAnalyzerEnabled)
@@ -635,6 +638,15 @@ public final class CliParser {
         return hasDisableOption(ARGUMENT.DISABLE_NUGETCONF, Settings.KEYS.ANALYZER_NUGETCONF_ENABLED);
     }
 
+    /**
+     * Returns true if the disableDotnetAssets command line argument was specified.
+     *
+     * @return true if the disableDotnetAssets command line argument was specified;
+     * otherwise false
+     */
+    public boolean isDotnetAssetsDisabled() {
+        return hasDisableOption(ARGUMENT.DISABLE_DOTNETASSETS, Settings.KEYS.ANALYZER_DOTNETASSETS_ENABLED);
+    }
 
     /**
      * Returns true if the disableAssembly command line argument was specified.
@@ -1533,6 +1545,10 @@ public final class CliParser {
          * Disables the Nuget packages.config Analyzer.
          */
         public static final String DISABLE_NUGETCONF = "disableNugetconf";
+        /**
+         * Disables the Dotnet project.assets.json Analyzer.
+         */
+        public static final String DISABLE_DOTNETASSETS = "disableDotnetAssets";
         /**
          * Disables the Central Analyzer.
          */

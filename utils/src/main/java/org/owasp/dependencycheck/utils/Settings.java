@@ -355,6 +355,10 @@ public final class Settings {
          */
         public static final String ANALYZER_NUGETCONF_ENABLED = "analyzer.nugetconf.enabled";
         /**
+         * The properties key for whether the .NET Core project.assets.json analyzer is enabled.
+         */
+        public static final String ANALYZER_DOTNETASSETS_ENABLED = "analyzer.dotnetassets.enabled";
+        /**
          * The properties key for whether the .NET MSBuild Project analyzer is
          * enabled.
          */

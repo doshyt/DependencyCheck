@@ -213,6 +213,10 @@ public class Check extends Update {
      */
     private Boolean nugetconfAnalyzerEnabled;
     /**
+     * Whether or not the .NET Core projects.assets.json file Analyzer is enabled.
+     */
+    private Boolean dotnetAssetsAnalyzerEnabled;
+    /**
      * Whether or not the PHP Composer Analyzer is enabled.
      */
     private Boolean composerAnalyzerEnabled;
@@ -671,7 +675,15 @@ public class Check extends Update {
         return nugetconfAnalyzerEnabled;
     }
 
-    
+    /**
+     * Returns whether or not the analyzer is enabled.
+     *
+     * @return true if the analyzer is enabled
+     */
+    public Boolean isDotnetAssetsAnalyzerEnabled() {
+        return dotnetAssetsAnalyzerEnabled;
+    }
+
     /**
      * Sets whether or not the analyzer is enabled.
      *
@@ -689,6 +701,16 @@ public class Check extends Update {
     public void setNugetconfAnalyzerEnabled(Boolean nugetconfAnalyzerEnabled) {
         this.nugetconfAnalyzerEnabled = nugetconfAnalyzerEnabled;
     }
+
+    /**
+     * Sets whether or not the analyzer is enabled.
+     *
+     * @param dotnetAssetsAnalyzerEnabled the value of the new setting
+     */
+    public void setDotnetAssetsAnalyzerEnabled(Boolean dotnetAssetsAnalyzerEnabled) {
+        this.dotnetAssetsAnalyzerEnabled = dotnetAssetsAnalyzerEnabled;
+    }
+
 
     /**
      * Get the value of composerAnalyzerEnabled.
@@ -1361,6 +1383,7 @@ public class Check extends Update {
 
         getSettings().setBooleanIfNotNull(Settings.KEYS.ANALYZER_NUSPEC_ENABLED, nuspecAnalyzerEnabled);
         getSettings().setBooleanIfNotNull(Settings.KEYS.ANALYZER_NUGETCONF_ENABLED, nugetconfAnalyzerEnabled);
+        getSettings().setBooleanIfNotNull(Settings.KEYS.ANALYZER_DOTNETASSETS_ENABLED, dotnetAssetsAnalyzerEnabled);
         getSettings().setBooleanIfNotNull(Settings.KEYS.ANALYZER_CENTRAL_ENABLED, centralAnalyzerEnabled);
         getSettings().setBooleanIfNotNull(Settings.KEYS.ANALYZER_NEXUS_ENABLED, nexusAnalyzerEnabled);
         getSettings().setBooleanIfNotNull(Settings.KEYS.ANALYZER_ARCHIVE_ENABLED, archiveAnalyzerEnabled);
